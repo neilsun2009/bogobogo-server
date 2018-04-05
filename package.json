@@ -1,0 +1,23 @@
+{
+  "name": "bogobogo-server",
+  "version": "1.0.0",
+  "description": "bogobogo.cn server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neilsun2009/bogobogo-server.git"
+  },
+  "keywords": [
+    "bogobogo",
+    "server"
+  ],
+  "author": "Bogo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neilsun2009/bogobogo-server/issues"
+  },
+  "homepage": "https://github.com/neilsun2009/bogobogo-server#readme"
+}
