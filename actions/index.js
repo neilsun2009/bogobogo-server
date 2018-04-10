@@ -3,14 +3,14 @@ const ROLE = require('../config').ROLE,
     // auth
     'LOGIN': {
       url: '/api/session',
-      method: 'PUT',
+      method: 'POST',
       controller: 'login'
     },
-    'SIGNUP': {
-      url: '/api/session',
-      method: 'POST',
-      controller: 'signup'
-    },
+    // 'SIGNUP': {
+    //   url: '/api/user',
+    //   method: 'POST',
+    //   controller: 'signup'
+    // },
     'CHECK_AUTH': {
       url: '/api/session',
       method: 'GET',
@@ -23,18 +23,18 @@ const ROLE = require('../config').ROLE,
       auth: ROLE.user
     },
     // article
-    'GET_ARTICLE': {
-      url: '/api/article',
+    'GET_ARTICLE_BY_HREF': {
+      url: '/api/article/href/:href',
       method: 'GET',
-      controller: 'getArticle'
+      controller: 'getArticleByHref'
     },
     'GET_ARTICLES': {
       url: '/api/articles',
       method: 'GET',
       controller: 'getArticles'
     },
-    'UPDATE_ARTICLE': {
-      url: '/api/article',
+    'UPDATE_ARTICLE_BY_ID': {
+      url: '/api/article/id/:articleId',
       method: 'PUT',
       controller: 'updateArticle',
       auth: ROLE.administrator
@@ -45,8 +45,8 @@ const ROLE = require('../config').ROLE,
       controller: 'addArticle',
       auth: ROLE.administrator
     },
-    'DELETE_ARTICLE': {
-      url: '/api/article',
+    'DELETE_ARTICLE_BY_ID': {
+      url: '/api/article/id/:articleId',
       method: 'DELETE',
       controller: 'deleteArticle',
       auth: ROLE.administrator
@@ -63,10 +63,16 @@ const ROLE = require('../config').ROLE,
       controller: 'addWord',
       auth: ROLE.administrator
     },
-    'DELETE_WORD': {
-      url: '/api/word',
+    'DELETE_WORD_BY_ID': {
+      url: '/api/word/id/:wordId',
       method: 'DELETE',
       controller: 'deleteWord',
+      auth: ROLE.administrator
+    },
+    'UPDATE_WORD_BY_ID': {
+      url: '/api/word/id/:wordId',
+      method: 'PUT',
+      controller: 'updateWord',
       auth: ROLE.administrator
     },
     // general

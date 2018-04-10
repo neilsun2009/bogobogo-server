@@ -1,5 +1,5 @@
 let mongoose = require('mongoose'),
-  BonusSchema = require('../schemas/bonus'),
-  model = mongoose.model('Bonus', BonusSchema);
+  GeneralSchema = require('../schemas/general'),
+  model = mongoose.model('General', GeneralSchema);
 
 module.exports = model;

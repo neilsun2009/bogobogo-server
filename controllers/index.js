@@ -1,20 +1,14 @@
 const AUTH_CONTROLLER = require('./auth'),
-  USER_CONTROLLER = require('./user'),
-  PROJECT_CONTROLLER = require('./project'),
-  BONUS_CONTROLLER = require('./bonus'),
-  SCORE_CONTROLLER = require('./score'),
-  EXCEL_CONTROLLER = require('./excel'),
-  DEPT_CONTROLLER = require('./dept'),
-  MAIL_CONTROLLER = require('./mail'),
+  GENERAL_CONTROLLER = require('./general'),
+  ARTICLE_CONTROLLER = require('./article'),
+  WORD_CONTROLLER = require('./word'),
+  QINIU_CONTROLLER = require('./qiniu'),
   CONTROLLERS = Object.assign({}, 
     AUTH_CONTROLLER,
-    USER_CONTROLLER,
-    PROJECT_CONTROLLER,
-    BONUS_CONTROLLER,
-    SCORE_CONTROLLER,
-    EXCEL_CONTROLLER,
-    DEPT_CONTROLLER,
-    MAIL_CONTROLLER
+    GENERAL_CONTROLLER,
+    ARTICLE_CONTROLLER,
+    WORD_CONTROLLER,
+    QINIU_CONTROLLER
   );
 
 module.exports = CONTROLLERS;

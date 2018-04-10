@@ -23,7 +23,8 @@ function dispatch(action) {
       res.json({
         code: 500,
         message: 'Server error.',
-        data: 'No route controller found.'
+        data: 'No route controller found.',
+        result: false
       });
       return;
     }
@@ -33,7 +34,8 @@ function dispatch(action) {
       res.json({
         code: 403,
         message: 'Access denied.',
-        data: null
+        data: null,
+        result: false
       });
     }
   };

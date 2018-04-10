@@ -1,5 +1,5 @@
 let mongoose = require('mongoose'),
-  ProjectSchema = require('../schemas/project'),
-  model = mongoose.model('Project', ProjectSchema);
+  ArticleSchema = require('../schemas/article'),
+  model = mongoose.model('Article', ArticleSchema);
 
 module.exports = model;

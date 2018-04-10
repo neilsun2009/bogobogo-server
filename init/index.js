@@ -1,23 +1,21 @@
-const userController = require('../db/controllers/user'),
-  SUPER_ADMIN_CONFIG = require('../config').SUPER_ADMIN;
+const generalController = require('../db/controllers/general'),
+  GENERAL_CONFIG = require('../config').GENERAL_INIT;
 
 function init() {
-  // const username = SUPER_ADMIN_CONFIG.username,
-  //   password = SUPER_ADMIN_CONFIG.initPwd;
-  // // 检查是否存在超级管理员
-  // userController.checkUsername(username)
-  //   .then((user) => {
-  //     if (!user) {
-  //       userController.addSuperAdmin(username, password)
-  //         .then(() => {
-  //           console.log('Set up new super admin: ', username);
-  //         }, (err) => {
-  //           console.log(err);
-  //         });
-  //     }
-  //   }, (err) => {
-  //     console.log(err);
-  //   });
+  // check if general exists
+  generalController.getGeneral()
+    .then((data) => {
+      if (!data) {
+        generalController.addGeneral(GENERAL_CONFIG)
+          .then(() => {
+            console.log('Set up initial general data.');
+          }, (err) => {
+            console.log(err);
+          });
+      }
+    }, (err) => {
+      console.log(err);      
+    });
 }
 
 module.exports = init;

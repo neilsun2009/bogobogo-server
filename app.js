@@ -1,17 +1,17 @@
 const express = require('express'),
-  // path = require('path'),
+  path = require('path'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
   session = require('express-session'),
   mongoose = require('mongoose'),
   mongoStore = require('connect-mongo')(session),
-  logger = require('morgan'),
+  // logger = require('morgan'),
   PORT = require('./config').PORT,
   DB_URL = 'mongodb://bogobogoAdmin:PWDBoGobOgO@localhost/bogobogo',
   DB_OPTIONS = {
     autoReconnect: true,
     poolSize: 10,
-    useMongoClient: true
+    // useMongoClient: true
   },
   apiRouter = require('./routes'),
   init = require('./init'),
@@ -30,10 +30,10 @@ mongoose.connect(DB_URL, DB_OPTIONS);
 init();
 
 // middlewares
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: TRUE
+  extended: true
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'static'), {

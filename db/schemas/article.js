@@ -38,10 +38,10 @@ let ArticleSchema = new mongoose.Schema({
     default: 0,
   },
   paras: [{
-    title: string,
-    cover: string,
-    html: string,
-    text: string,
+    title: String,
+    cover: String,
+    html: String,
+    text: String,
   }],
   isDeleted: {
     type: Boolean,
@@ -60,6 +60,7 @@ let ArticleSchema = new mongoose.Schema({
 
 ArticleSchema.pre('save', function(next) {
   let article = this;
+  // console.log(article);
   article.updateTime = Date.now();
   if (article.isNew) {
     article.addTime = Date.now();
@@ -78,26 +79,36 @@ ArticleSchema.pre('findOneAndUpdate', function(next) {
 
 ArticleSchema.statics = {
   findArticle(conditions) {
+    // console.log(conditions);
     return this
       .findOne(Object.assign({}, conditions, { isDeleted: false}))
       .exec();
   },
-  findArticles(offset, limit, sortBy, sortOrder, conditions, s) {
+  findArticles(offset, limit, cat, before, s, tag, sortBy, sortOrder, condition) {
     return new Promise((resolve, reject) => {
       let query = this
           .count(Object.assign( // 数量
             {}, 
-            conditions, 
+            condition, 
             { isDeleted: false }
           )),
         count = -1;
-      if (s.length && typeof s === 'string') { // 关键字
+      if (typeof s === 'string' && s.length) { // 关键字
         query.regex('title', new RegExp(s, 'gi'));
+      }
+      if (before && before.length) { // 时间
+        query.lt('addTime', new Date(before));
+      }
+      if (tag && tag.length) {
+        query.in('tags', tag);
+      }
+      if (cat && cat.length) {
+        query.where('cat', cat);
       }
       query.exec()
         .then((countResult) => {
           count = countResult;
-          query.find();
+          query.find().select('-paras');
           sortBy = sortBy || 'addTime'; // 排序
           sortBy = sortOrder === 'asc' ? sortBy : `-${sortBy}`;
           query.sort(sortBy);

@@ -5,10 +5,7 @@ let WordSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  image: {
-    type: String,
-    required: true
-  },
+  image: String,
   isPublic: {
     type: Boolean,
     default: true,
@@ -53,17 +50,20 @@ WordSchema.statics = {
       .findOne(Object.assign({}, conditions, { isDeleted: false}))
       .exec();
   },
-  findWords(offset, limit, sortBy, sortOrder, conditions, s) {
+  findWords(offset, limit, before, s, sortBy, sortOrder, condition) {
     return new Promise((resolve, reject) => {
       let query = this
           .count(Object.assign( // 数量
             {}, 
-            conditions, 
+            condition, 
             { isDeleted: false }
           )),
         count = -1;
-      if (s.length && typeof s === 'string') { // 关键字
-        query.regex('title', new RegExp(s, 'gi'));
+      if (typeof s === 'string' && s.length) { // 关键字
+        query.regex('text', new RegExp(s, 'gi'));
+      }
+      if (before && before.length) { // 时间
+        query.lt('addTime', new Date(before));
       }
       query.exec()
         .then((countResult) => {

@@ -1,5 +1,5 @@
 let mongoose = require('mongoose'),
-  ScoreSchema = require('../schemas/score'),
-  model = mongoose.model('Score', ScoreSchema);
+  WordSchema = require('../schemas/word'),
+  model = mongoose.model('Word', WordSchema);
 
 module.exports = model;
