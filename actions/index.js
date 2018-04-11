@@ -92,6 +92,48 @@ const ROLE = require('../config').ROLE,
       url: '/api/qiniu_token',
       method: 'GET',
       controller: 'getQiniuToken'
+    },
+    // byte
+    'GET_BYTES': {
+      url: '/api/bytes',
+      method: 'GET',
+      controller: 'getBytes'
+    },
+    'ADD_BYTE': {
+      url: '/api/byte',
+      method: 'POST',
+      controller: 'addByte',
+      auth: ROLE.administrator
+    },
+    'DELETE_BYTE_BY_ID': {
+      url: '/api/byte/id/:byteId',
+      method: 'DELETE',
+      controller: 'deleteByte',
+      auth: ROLE.administrator
+    },
+    'UPDATE_BYTE_BY_ID': {
+      url: '/api/byte/id/:byteId',
+      method: 'PUT',
+      controller: 'updateByte',
+      auth: ROLE.administrator
+    },
+    // log
+    'GET_LOGS': {
+      url: '/api/logs',
+      method: 'GET',
+      controller: 'getLogs'
+    },
+    'ADD_LOG': {
+      url: '/api/log',
+      method: 'POST',
+      controller: 'addLog',
+      auth: ROLE.administrator
+    },
+    'DELETE_LOG_BY_ID': {
+      url: '/api/log/id/:logId',
+      method: 'DELETE',
+      controller: 'deleteLog',
+      auth: ROLE.administrator
     }
   };
 
