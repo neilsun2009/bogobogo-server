@@ -100,7 +100,7 @@ ArticleSchema.statics = {
         query.lt('addTime', new Date(before));
       }
       if (tag && tag.length) {
-        query.in('tags', tag);
+        query.where('tags', tag);
       }
       if (cat && cat.length) {
         query.where('cat', cat);

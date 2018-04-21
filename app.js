@@ -1,6 +1,6 @@
 const express = require('express'),
   path = require('path'),
-  cookieParser = require('cookie-parser'),
+  // cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
   session = require('express-session'),
   mongoose = require('mongoose'),
@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'static'), {
   maxAge: 1000 * 60 * 60 * 24 * 30,
   lastModified: true
