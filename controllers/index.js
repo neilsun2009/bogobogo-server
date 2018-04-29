@@ -5,6 +5,7 @@ const AUTH_CONTROLLER = require('./auth'),
   QINIU_CONTROLLER = require('./qiniu'),
   BYTE_CONTROLLER = require('./byte'),
   LOG_CONTROLLER = require('./log'),
+  WX_CONTROLLER = require('./wx'),
   CONTROLLERS = Object.assign({}, 
     AUTH_CONTROLLER,
     GENERAL_CONTROLLER,
@@ -12,7 +13,8 @@ const AUTH_CONTROLLER = require('./auth'),
     WORD_CONTROLLER,
     QINIU_CONTROLLER,
     BYTE_CONTROLLER,
-    LOG_CONTROLLER
+    LOG_CONTROLLER,
+    WX_CONTROLLER
   );
 
 module.exports = CONTROLLERS;

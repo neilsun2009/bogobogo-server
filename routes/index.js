@@ -6,7 +6,7 @@ function checkPermission(auth, session) {
   if (!auth) {
     return true;
   } else {
-    if (!session || auth > ROLE[session.auth]) {
+    if (!session || auth > ROLE[session.access]) {
       return false;
     } else {
       return true;

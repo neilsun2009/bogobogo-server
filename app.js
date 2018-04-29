@@ -6,8 +6,9 @@ const express = require('express'),
   mongoose = require('mongoose'),
   mongoStore = require('connect-mongo')(session),
   // logger = require('morgan'),
+  MONGO_CONFIG = require('./config/mongo_config'),
   PORT = require('./config').PORT,
-  DB_URL = 'mongodb://bogobogoAdmin:PWDBoGobOgO@localhost/bogobogo',
+  DB_URL = `mongodb://bogobogoAdmin:${MONGO_CONFIG.pwd}@localhost/bogobogo`,
   DB_OPTIONS = {
     autoReconnect: true,
     poolSize: 10,
@@ -41,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'static'), {
   lastModified: true
 }));
 app.use(session({
-  secret:'NUMMERbogoGEMEIMNIS',
+  secret: MONGO_CONFIG.secret,
   cookie: { 
     maxAge:  1000 * 60 * 60 * 24 * 15
   },

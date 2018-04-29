@@ -93,6 +93,12 @@ const ROLE = require('../config').ROLE,
       method: 'GET',
       controller: 'getQiniuToken'
     },
+    // wx
+    'GET_WX_TOKEN': {
+      url: '/api/wx_token',
+      method: 'GET',
+      controller: 'getWXToken' 
+    },
     // byte
     'GET_BYTES': {
       url: '/api/bytes',
