@@ -16,7 +16,14 @@ const express = require('express'),
   },
   apiRouter = require('./routes'),
   init = require('./init'),
-  app = express();
+  fs = require('fs'),
+  CRED_PATH = require('./config').CRED_PATH,
+  credentials = {
+    key: fs.readFileSync(CRED_PATH.key),
+    cert: fs.readFileSync(CRED_PATH.cert),
+  },
+  app = express(),
+  https = require('https').createServer(credentials, app);
 
 // error
 process.on('uncaughtException', function(err) {
@@ -68,10 +75,10 @@ app.get('/*', function(req, res) {
 });
 
 // listen
-app.listen(PORT, (err) => {
+https.listen(PORT, (err) => {
   if (err) {
     console.log(err);
   } else {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`HTTPS Server running on port ${PORT}`);
   }
 });

@@ -6,6 +6,11 @@ const CONFIG = {
     user: 1,
     administrator: 100,
   },
+  // ssl
+  CRED_PATH: {
+    key: './CA/2_bogobogo.cn.key',
+    cert: './CA/1_bogobogo.cn_bundle.crt'
+  },
   // initial general setting
   GENERAL_INIT: {
     cats: {
